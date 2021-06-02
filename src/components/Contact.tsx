@@ -5,18 +5,9 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 import { useState } from "react";
-interface IUser {
-    id: number;
-    first_name: string;
-    last_name: string;
-    email: string;
-    avatar: string;
-    gender: string;
-    search_field: string;
-    addContact: (checkbox_selected: boolean, id: number) => void;
-}
+import IUser from "../interfaces/IUser.interface";
 const Contact: FC<IUser> = (props) => {
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(false); //checkbox toggled boolean
     return (
         <ListGroup.Item
             style={

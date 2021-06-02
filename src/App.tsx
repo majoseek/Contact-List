@@ -1,7 +1,7 @@
-import Contact from "./Contact";
+import Contact from "./components/Contact";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import User from "./User.interface";
+import { useEffect, useState } from "react";
+import User from "./interfaces/User.interface";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -10,11 +10,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FaSearch } from "react-icons/fa";
 import FormControl from "react-bootstrap/FormControl";
 function App() {
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([]); //array of users
     const [selected_contacts, setSelectedContacts] = useState<Array<number>>(
         []
-    );
-    const [search_val, setSearchVal] = useState("");
+    ); //selected contacts (checkbox on)
+    const [search_val, setSearchVal] = useState(""); //search bar field value
+    /**
+     * Function addContact when user toggles checkbox
+     *
+     * @param checkbox_selected
+     * @param id
+     * returns void;
+     */
     const addContact = (checkbox_selected: boolean, id: number) => {
         if (!checkbox_selected) {
             const select_new_contact: Array<number> = [
