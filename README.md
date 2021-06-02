@@ -2,8 +2,11 @@
 ## Getting started
 Author: Mateusz Maj
 
-To run project locally go to root folder and run:\
-```npm start```\
+To run project locally go to root folder and run:
+```
+npm install
+npm start
+```
 As an alternative you can run application in container.\
 In order to do that make sure you have got ```Docker Desktop```
 installed, then go to root folder and type:
