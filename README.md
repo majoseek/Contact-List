@@ -1,6 +1,7 @@
 # Contact list
 ## Getting started
-Author: Mateusz Maj\
+Author: Mateusz Maj
+
 To run project locally go to root folder and run:\
 ```npm start```\
 As an alternative you can run application in container.\
