@@ -19,8 +19,8 @@ function App() {
     /**
      * Function addContact is used when user toggles checkbox
      *
-     * @param checkbox_selected
-     * @param id
+     * @param checkbox_selected - boolean, which tells if user toggled the checkbox
+     * @param id - number, which is user id
      * returns void;
      */
     const addContact = (checkbox_selected: boolean, id: number) => {
