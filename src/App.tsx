@@ -1,6 +1,6 @@
 import Contact from "./Contact";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import User from "./User.interface";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -11,7 +11,26 @@ import { FaSearch } from "react-icons/fa";
 import FormControl from "react-bootstrap/FormControl";
 function App() {
     const [users, setUsers] = useState([]);
-    const [all_users, setAllUsers] = useState([]);
+    const [selected_contacts, setSelectedContacts] = useState<Array<number>>(
+        []
+    );
+    const [search_val, setSearchVal] = useState("");
+    const addContact = (checkbox_selected: boolean, id: number) => {
+        if (!checkbox_selected) {
+            const select_new_contact: Array<number> = [
+                ...selected_contacts,
+                id,
+            ];
+            setSelectedContacts(select_new_contact);
+            console.log(select_new_contact);
+        } else {
+            const delete_contacts = [...selected_contacts];
+            const delete_index = delete_contacts.indexOf(id);
+            delete_contacts.splice(delete_index, 1);
+            setSelectedContacts(delete_contacts);
+            console.log(delete_contacts);
+        }
+    };
     useEffect(() => {
         axios
             .get(
@@ -19,12 +38,6 @@ function App() {
             )
             .then((response) => {
                 setUsers(
-                    response.data.sort((elem1: User, elem2: User) => {
-                        if (elem1.last_name < elem2.last_name) return -1;
-                        else return 1;
-                    })
-                );
-                setAllUsers(
                     response.data.sort((elem1: User, elem2: User) => {
                         if (elem1.last_name < elem2.last_name) return -1;
                         else return 1;
@@ -49,27 +62,12 @@ function App() {
                             <Col>
                                 <Row>
                                     <FormControl
+                                        onChange={(event) =>
+                                            setSearchVal(event.target.value)
+                                        }
                                         placeholder="Enter contact name"
                                         aria-label="Enter contact name"
                                         aria-describedby="basic-addon1"
-                                        onChange={(event) => {
-                                            setUsers(
-                                                all_users.filter(
-                                                    (user: User) => {
-                                                        return (
-                                                            user.first_name.includes(
-                                                                event.target
-                                                                    .value
-                                                            ) ||
-                                                            user.last_name.includes(
-                                                                event.target
-                                                                    .value
-                                                            )
-                                                        );
-                                                    }
-                                                )
-                                            );
-                                        }}
                                     />
                                 </Row>
                             </Col>
@@ -83,6 +81,7 @@ function App() {
                             {users.map((user: User) => {
                                 return (
                                     <Contact
+                                        addContact={addContact}
                                         key={user.id}
                                         id={user.id}
                                         first_name={user.first_name}
@@ -94,6 +93,7 @@ function App() {
                                                 : user.avatar
                                         }
                                         gender={user.gender}
+                                        search_field={search_val}
                                     />
                                 );
                             })}
