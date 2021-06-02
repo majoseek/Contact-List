@@ -14,3 +14,4 @@ installed, then go to root folder and type:
 docker build -t contact-list .
 docker run -dp 3000:3000 contact-list
 ```
+After all, go to localhost:3000/ to see the app!

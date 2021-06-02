@@ -15,8 +15,9 @@ function App() {
         []
     ); //selected contacts (checkbox on)
     const [search_val, setSearchVal] = useState(""); //search bar field value
+
     /**
-     * Function addContact when user toggles checkbox
+     * Function addContact is used when user toggles checkbox
      *
      * @param checkbox_selected
      * @param id
