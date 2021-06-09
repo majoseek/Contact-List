@@ -16,3 +16,5 @@ docker build -t contact-list .
 docker run -dp 3000:3000 contact-list
 ```
 After all, go to localhost:3000/ to see the app!
+### Screenshot of page
+<img src="https://i.ibb.co/vqhqTTN/example-contact.png" width="200" height="400" />
