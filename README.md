@@ -1,4 +1,5 @@
 # Contact list
+Recruitment task for the position of Junior JavaScript Developer
 ## Getting started
 Author: Mateusz Maj
 
