@@ -1,7 +1,4 @@
-# Contact list
-Recruitment task for the position of Junior JavaScript Developer
 ## Getting started
-Author: Mateusz Maj
 
 To run project locally go to root folder and run:
 ```
